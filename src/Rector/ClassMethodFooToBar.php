@@ -41,7 +41,9 @@ class ClassMethodFooToBar extends AbstractRector
             return null;
         }
 
+        // rename
         $node->name = new Name('bar');
+
         return $node;
     }
 }
