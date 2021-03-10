@@ -1,17 +1,19 @@
 <?php
 
-
-namespace ASTDemo\Rector;
-
-require_once "../../vendor/autoload.php";
+require_once __DIR__ .  '/../../vendor/autoload.php';
 
 use PhpParser\NodeDumper;
 use PhpParser\ParserFactory;
 
 $filename = $argv[1] ?? null;
 if (!isset($filename)) {
-    print "Needs Filename!" . PHP_EOL;
-    exit(0);
+    print "Needs filename!" . PHP_EOL;
+    exit(1);
+}
+
+if (!file_exists($filename)) {
+    print "No such file!" . PHP_EOL;
+    exit(1);
 }
 
 $code = file_get_contents($filename);
